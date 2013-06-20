@@ -1,0 +1,52 @@
+<%- model_class = Expense -%>
+<script>
+$(document).ready(function() {
+  $("#creditor").keyup(function(event){
+      if(event.keyCode == 13){
+        $("#btnSearch").click();
+      }
+  });
+  $("#debtor").keyup(function(event){
+      if(event.keyCode == 13){
+        $("#btnSearch").click();
+      }
+  });
+});
+
+function search() {
+  var creditor = $("#creditor").val();
+  var debtor = $("#debtor").val();
+  
+  $("tbody tr").each(function(row) {
+    if($(this).find("td#cName").text().indexOf(creditor) != -1 && $(this).find("td#dName").text().indexOf(debtor) != -1) {
+      $(this).show();
+    }
+    else {
+      $(this).hide();
+    }
+  });
+}
+</script>
+<form class="form-search">
+  <input type="text" id="creditor" placeholder="Creditor" />
+  <input type="text" id="debtor" placeholder="Debtor"/>
+  <button type="button" id="btnSearch" class="btn" onclick="search();">Search</button>
+</form>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:creditor_id) %></th>
+      <th><%= model_class.human_attribute_name(:debtor_id) %></th>
+      <th><%= model_class.human_attribute_name(:money) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr id="row">
+        <td id="cName"><%= expense.creditor.name %></td>
+        <td id="dName"><%= expense.debtor.name %></td>
+        <td><%= number_to_currency expense.money %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  creditor: 
+  debtor: 
+  money: 1
+  memo: MyString
+
+two:
+  creditor: 
+  debtor: 
+  money: 1
+  memo: MyString

@@ -1,0 +1,28 @@
+<%- model_class = ExpenseHistory -%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:creditor_id) %></th>
+      <th><%= model_class.human_attribute_name(:debtor_id) %></th>
+      <th><%= model_class.human_attribute_name(:money) %></th>
+      <th><%= model_class.human_attribute_name(:memo) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expense_histories.each do |expense_history| %>
+      <tr>
+        <td><%= expense_history.id %></td>
+        <td><%= expense_history.creditor.name %></td>
+        <td><%= expense_history.debtor.name %></td>
+        <td><%= number_to_currency expense_history.money %></td>
+        <td><%= expense_history.memo %></td>
+        <td><%=l expense_history.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @expense_histories %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              expenses_path, :class => 'btn'  %>

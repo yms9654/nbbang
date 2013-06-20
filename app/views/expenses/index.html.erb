@@ -1,0 +1,43 @@
+<%- model_class = Expense -%>
+<%= search_form_for @q, :class => 'navbar-search' do |f| %>
+  <%= f.text_field :creditor_name_cont, :class => "search-query", :placeholder => "Creditor" %>
+  <%= f.text_field :debtor_name_cont, :class => "search-query", :placeholder => "Debtor" %>
+  <%= f.submit :class => "btn" %>
+<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:creditor_id) %></th>
+      <th><%= model_class.human_attribute_name(:debtor_id) %></th>
+      <th><%= model_class.human_attribute_name(:money) %></th>
+      <th><%= model_class.human_attribute_name(:memo) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:updated_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= link_to expense.id, expense_path(expense) %></td>
+        <td><%= expense.creditor.name %></td>
+        <td><%= expense.debtor.name %></td>
+        <td><%= number_to_currency expense.money %></td>
+        <td><%= expense.memo %></td>
+        <td><%=l expense.created_at %></td>
+        <td><%=l expense.updated_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_expense_path(expense), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      expense_path(expense),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @expenses %>

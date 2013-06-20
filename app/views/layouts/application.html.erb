@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nbbang</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="/expenses_sum">엔빵</a>
+    <ul class="nav">
+      <li><a href="/expenses_sum">퉁쳐서 보기</a></li>
+      <li><a href="/expenses/new">엔빵 입력</a></li>
+      <li><a href="/expenses">엔빵 리스트</a></li>
+      <li><a href="/expense_histories">엔빵 히스토리</a></li>
+      <li><a href="/users">사용자 리스트</a></li>
+    </ul>
+  </div>
+</div>
+
+<%= yield %>
+
+</body>
+</html>
