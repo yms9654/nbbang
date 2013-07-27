@@ -18,6 +18,7 @@
       <li><a href="/expenses">엔빵 리스트</a></li>
       <li><a href="/expense_histories">엔빵 히스토리</a></li>
       <li><a href="/users">사용자 리스트</a></li>
+      <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
     </ul>
   </div>
 </div>
