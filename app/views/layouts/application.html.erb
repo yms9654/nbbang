@@ -1,29 +1,33 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Nbbang</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> 
-</head>
-<body>
-<div class="navbar">
-  <div class="navbar-inner">
-    <a class="brand" href="/expenses_sum">엔빵</a>
-    <ul class="nav">
-      <li><a href="/expenses_sum">퉁쳐서 보기</a></li>
-      <li><a href="/expenses/new">엔빵 입력</a></li>
-      <li><a href="/expenses">엔빵 리스트</a></li>
-      <li><a href="/expense_histories">엔빵 히스토리</a></li>
-      <li><a href="/users">사용자 리스트</a></li>
-      <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-    </ul>
-  </div>
-</div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="/expenses_sum">엔빵</a>
+        <ul class="nav">
+          <li><a href="/expenses_sum">퉁쳐서 보기</a></li>
+          <li><a href="/expenses/new">엔빵 입력</a></li>
+          <li><a href="/expenses">엔빵 리스트</a></li>
+          <li><a href="/expense_histories">엔빵 히스토리</a></li>
+          <li><a href="/users">사용자 리스트</a></li>
+          <li><%= link_to "Sign out", destroy_user_session_path,
+          :method => :delete =%></li>
+        </ul>
+      </div>
+    </div>
+
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
