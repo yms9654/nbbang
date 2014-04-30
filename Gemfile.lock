@@ -31,6 +31,7 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
+    chunky_png (1.2.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -38,6 +39,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.1.1)
+      compass (>= 0.12.2)
+    daemon_controller (1.2.0)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -49,6 +57,7 @@ GEM
     foundation-rails (5.2.2.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    fssm (0.2.10)
     hike (1.2.3)
     i18n (0.6.4)
     journey (1.0.4)
@@ -67,6 +76,10 @@ GEM
     mime-types (1.23)
     multi_json (1.7.7)
     orm_adapter (0.4.0)
+    passenger (4.0.41)
+      daemon_controller (>= 1.2.0)
+      rack
+      rake (>= 0.8.1)
     pg (0.15.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -133,10 +146,12 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  compass-rails
   devise
   foundation-rails
   jquery-rails
   kaminari
+  passenger
   pg
   rails (= 3.2.9)
   ransack
