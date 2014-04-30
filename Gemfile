@@ -54,3 +54,4 @@ gem 'kaminari'
 
 gem 'unicorn'
 gem 'devise'
+gem 'foundation-rails'

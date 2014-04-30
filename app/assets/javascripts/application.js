@@ -5,3 +5,5 @@
 // the compiled file.
 //
 //= require_tree .
+
+$(function(){ $(document).foundation(); });
