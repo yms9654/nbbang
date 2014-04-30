@@ -1,48 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html>
+<head>
+  <title>Nbbang</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "vendor/modernizr" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+</head>
+<body>
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+	<nav class="row"> 
+		<div class="large-12 columns"> 
+			<h2>nbbang</h2> 
+			<ul class="button-group radius even-4"> 
+				<li><a href="/expenses_sum">퉁쳐서 보기</a></li>
+      	<li><a href="/expenses/new">엔빵 입력</a></li>
+      	<li><a href="/expenses">엔빵 리스트</a></li>
+      	<li><a href="/expense_histories">엔빵 히스토리</a></li>
+      	<li><a href="/users">사용자 리스트</a></li>
+      	<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+			</ul>
+		</div>
+	</nav>
+  <%= yield %>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-    <div class="off-canvas-wrap" data-offcanvas>
-      <div class="inner-wrap">
-        <nav class="tab-bar">
-          <section class="left-small">
-            <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-          </section>
-          <section class="middle tab-bar-section">
-            <h1 class="title">nbbang</h1>
-          </section>
-        </nav>
-
-        <aside class="left-off-canvas-menu">
-          <ul class="off-canvas-list">
-            <li><a href="/expenses_sum">퉁쳐서 보기</a></li>
-            <li><a href="/expenses/new">엔빵 입력</a></li>
-            <li><a href="/expenses">엔빵 리스트</a></li>
-            <li><a href="/expense_histories">엔빵 히스토리</a></li>
-            <li><a href="/users">사용자 리스트</a></li>
-            <li><%= link_to "Sign out", destroy_user_session_path ,:method => :delete =%></li>
-          </ul>
-        </aside>
-        
-        <section class="main-section">
-          <!-- content goes here -->
-          <%= yield %>
-        </section>
-
-      <a class="exit-off-canvas"></a>
-
-      </div>
-    </div>
-  </body>
+</body>
 </html>
