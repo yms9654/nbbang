@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
   before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, :only => [:sum]
   # GET /expenses
   # GET /expenses.json
   def index

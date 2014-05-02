@@ -8,21 +8,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 </head>
 <body>
-
-	<nav class="row"> 
-		<div class="large-12 columns"> 
-			<h2>nbbang</h2> 
-			<ul class="button-group radius even-4"> 
-				<li><a href="/expenses_sum">퉁쳐서 보기</a></li>
+  <div data-role="header" style="overflow:hidden;">
+    <h1>Nbbang</h1>
+    <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.email %></strong>.
+      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'ui-btn-left' %> |
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'ui-btn-right' %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path, :class => 'ui-btn-left' %> |
+      <%= link_to "Login", new_user_session_path, :class => 'ui-btn-right' %>
+    <% end %>
+  	<div data-role="navbar" data-grid="d"> 
+  		<ul> 
+  			<li><a href="/expenses_sum">퉁쳐서 보기</a></li>
       	<li><a href="/expenses/new">엔빵 입력</a></li>
       	<li><a href="/expenses">엔빵 리스트</a></li>
       	<li><a href="/expense_histories">엔빵 히스토리</a></li>
       	<li><a href="/users">사용자 리스트</a></li>
-        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-			</ul>
-		</div>
-	</nav>
-  <%= yield %>
+        <li></li>
+  		</ul>
+  	</div>
+  </div>
+	<%= yield %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 </body>
