@@ -24,19 +24,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-
-# foundation
-gem "foundation-rails"
-
 # 검색
 gem "ransack"
 
 # 페이징
 gem 'kaminari'
 
-gem 'unicorn'
 gem 'devise'
-gem 'foundation-rails'
-gem 'compass-rails'
 gem 'passenger'
+gem 'jquery-rails'
+gem 'jquery_mobile_rails'
